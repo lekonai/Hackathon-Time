@@ -1,12 +1,10 @@
-
-def costFunction(newHeading, boatHeading, windFrom):
+def costFunction(newHeading, boatHeading, windFrom, localWindSpeed):
    
     #newHeading is the new angle you want the boat to be heading at
     #boatHeading is the angle you want the boat to be heading at
     #windForm is the windDirectionAngle + 180 (mod 360)
 
     move = True
-    localWindSpeed = 30
     boatSpeed = 0
     speedFactor = 0
     turnPenalty = 0
@@ -49,7 +47,7 @@ def costFunction(newHeading, boatHeading, windFrom):
         timePenalty = 2.5
     if 50 < changeInHeading < 60:
         timePenalty = 3
-    if timePenalty >= 60 : 
+    if changeInHeading >= 60 : 
         timePenalty = 4
     
 
@@ -57,7 +55,7 @@ def costFunction(newHeading, boatHeading, windFrom):
 
     return timeForEachMove
 
-cost = costFunction(90,120,50)
+cost = costFunction(90,120,50, 10)
 
 if cost != "error":
     print(f'cost is: {cost}' )
